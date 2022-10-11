@@ -131,6 +131,7 @@ const Container = styled.div`
 			.avatar {
 				img {
 					height: 3rem;
+					border-radius: 50%;
 				}
 			}
 
