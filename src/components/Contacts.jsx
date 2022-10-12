@@ -3,7 +3,13 @@ import styled from "styled-components";
 import Logo from "../assets/logo.svg";
 import ErrorImage from "../assets/errorImg.png";
 
-export default function Contacts({ contacts, currentUser, changeChat }) {
+export default function Contacts({
+	contacts,
+	currentUser,
+	changeChat,
+	dispatch,
+	darkMode,
+}) {
 	const [state, setState] = useState({
 		currentUserName: undefined,
 		currentUserImage: undefined,
@@ -31,6 +37,27 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
 					<div className='brand'>
 						<img src={Logo} alt='logo' />
 						<h3>Chat chill</h3>
+					</div>
+					<div className='dark-mode-toggle'>
+						<h3>Dark Mode: </h3>
+						<div>
+							<span>Off</span>
+							<label htmlFor='checkbox'>
+								<input
+									type='checkbox'
+									name=''
+									id='checkbox'
+									checked={darkMode.isDarkMode}
+									onChange={() => {
+										dispatch({
+											type: "TOGGLE_DARK_MODE",
+										});
+									}}
+								/>
+								<div className='slider'></div>
+							</label>
+							<span>On</span>
+						</div>
 					</div>
 					<div className='contacts'>
 						{contacts.map((contact, index) => {
@@ -80,7 +107,8 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	background-color: #080420;
+	background-color: ${(props) => props.theme.bgDetail};
+	border: ${(props) => props.theme.borderApp};
 	overflow: hidden;
 
 	.brand {
@@ -88,14 +116,69 @@ const Container = styled.div`
 		justify-content: center;
 		align-items: center;
 		gap: 1rem;
-		padding: 1.5rem 0;
+		padding: 1.5rem 0 0.5rem;
 		img {
 			height: 3rem;
 		}
 
 		h3 {
-			color: white;
+			color: ${(props) => props.theme.color};
 			text-transform: uppercase;
+		}
+	}
+
+	.dark-mode-toggle {
+		padding-bottom: 1.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		h3 {
+			color: ${(props) => props.theme.color};
+			margin-right: 0.4rem;
+			font-size: 1rem;
+		}
+		& > div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			span {
+				color: ${(props) => props.theme.color};
+				font-size: 0.8rem;
+			}
+			label {
+				height: 25px;
+				width: 48px;
+				position: relative;
+				margin: 0 5px;
+				input {
+					display: none;
+					&:checked + .slider::before {
+						transform: translateX(22px);
+					}
+				}
+				.slider {
+					background-color: ${(props) => props.theme.bgSlide};
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					border-radius: 34px;
+					cursor: pointer;
+					&::before {
+						content: "";
+						position: absolute;
+						width: 18px;
+						height: 18px;
+						background-color: ${(props) => props.theme.bgToggleButton};
+						border-radius: 50%;
+						display: inline-block;
+						bottom: 4px;
+						left: 4px;
+						transition: 0.5s;
+					}
+				}
+			}
 		}
 	}
 
@@ -110,14 +193,14 @@ const Container = styled.div`
 		&::-webkit-scrollbar {
 			width: 0.2rem;
 			&-thumb {
-				background-color: #ffffff39;
+				background-color: ${(props) => props.theme.bgContact};
 				width: 0.1rem;
 				border-radius: 1rem;
 			}
 		}
 
 		.contact {
-			background-color: #ffffff39;
+			background-color: ${(props) => props.theme.bgContact};
 			min-height: 5rem;
 			width: 90%;
 			border-radius: 0.2rem;
@@ -137,18 +220,18 @@ const Container = styled.div`
 
 			.username {
 				h3 {
-					color: white;
+					color: ${(props) => props.theme.color};
 				}
 			}
 		}
 
 		.selected {
-			background-color: #9186f3;
+			background-color: ${(props) => props.theme.bgContactSelect};
 		}
 	}
 
 	.current-user {
-		background-color: #0d0d30;
+		background-color: ${(props) => props.theme.bgInfoUser};
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -164,12 +247,12 @@ const Container = styled.div`
 
 		.username {
 			h1 {
-				color: white;
+				color: ${(props) => props.theme.color};
 			}
 		}
 	}
 
-	@media screen and (max-width: 575.99px) {
+	@media screen and (max-width: 576px) {
 		.brand {
 			flex-direction: column;
 			padding: 1rem 0;
@@ -177,7 +260,29 @@ const Container = styled.div`
 				height: 2rem;
 			}
 			h3 {
-				font-size: 1rem;
+				font-size: 1.1rem;
+			}
+		}
+		.dark-mode-toggle {
+			flex-direction: column;
+			h3 {
+				font-size: 0.9rem;
+			}
+			& > div {
+				span {
+					font-size: 0.75rem;
+				}
+				label {
+					width: 40px;
+					height: 20px;
+					input:checked + .slider::before {
+						transform: translateX(17px);
+					}
+					.slider::before {
+						bottom: 2px;
+						left: 2px;
+					}
+				}
 			}
 		}
 		.contacts {

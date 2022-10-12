@@ -103,6 +103,9 @@ const Container = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	overflow: hidden;
+	border: ${(props) => props.theme.borderApp};
+	border-left: none;
+
 	@media screen and (min-width: 720px) and (max-width: 1080px) {
 		grid-template-rows: 15% 70% 15%;
 	}
@@ -112,7 +115,7 @@ const Container = styled.div`
 		align-items: center;
 		justify-content: space-between;
 		padding: 0.5rem 2rem;
-
+		box-shadow: 0px 0px 10px 0px rgba(75, 75, 75, 0.5);
 		.user-detail {
 			display: flex;
 			align-items: center;
@@ -126,7 +129,7 @@ const Container = styled.div`
 
 			.username {
 				h3 {
-					color: white;
+					color: ${(props) => props.theme.color};
 				}
 			}
 		}
@@ -142,7 +145,7 @@ const Container = styled.div`
 		&::-webkit-scrollbar {
 			width: 0.2rem;
 			&-thumb {
-				background-color: #ffffff39;
+				background-color: ${(props) => props.theme.bgContact};
 				width: 0.1rem;
 				border-radius: 1rem;
 			}
@@ -158,7 +161,7 @@ const Container = styled.div`
 				padding: 1rem;
 				font-size: 1rem;
 				border-radius: 1rem;
-				color: #d1d1d1;
+				color: ${(props) => props.theme.colorMsg};
 			}
 		}
 
@@ -166,7 +169,7 @@ const Container = styled.div`
 			justify-content: flex-end;
 
 			.content {
-				background-color: #4f04ff21;
+				background-color: ${(props) => props.theme.bgSended};
 			}
 		}
 
@@ -174,7 +177,7 @@ const Container = styled.div`
 			justify-content: flex-start;
 
 			.content {
-				background-color: #9900ff20;
+				background-color: ${(props) => props.theme.bgReceived};
 			}
 		}
 	}

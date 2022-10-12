@@ -41,7 +41,6 @@ export default function SetAvatar() {
 				image: state.avatars[state.selectedAvatar],
 			});
 
-			console.log({ result });
 			if (result.data.isSet) {
 				user.isAvatarImageSet = true;
 				user.avatarImage = result.data.avatarImage;

@@ -24,17 +24,17 @@ const Button = styled.button`
 	align-items: center;
 	padding: 0.5rem;
 	border-radius: 0.5rem;
-	background-color: #9a86f3;
+	background-color: ${(props) => props.theme.colorButton};
 	cursor: pointer;
 	border: none;
 	transition: 0.3s ease-in-out;
 	&:hover {
-		background-color: #321f87;
+		background-color: ${(props) => props.theme.colorButtonHover};
 	}
 
 	svg {
 		font-size: 1.3rem;
-		color: #ebe7ff;
+		color: ${(props) => props.theme.colorSvg};
 	}
 
 	@media screen and (max-width: 576px) {

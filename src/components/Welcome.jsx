@@ -19,7 +19,9 @@ const Container = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	color: white;
+	color: ${(props) => props.theme.color};
+	border: ${(props) => props.theme.borderApp};
+	border-left: none;
 	padding: 0 1rem;
 
 	img {
@@ -27,7 +29,7 @@ const Container = styled.div`
 	}
 
 	span {
-		color: #4e0eff;
+		color: ${(props) => props.theme.colorName};
 	}
 
 	@media screen and (max-width: 576px) {

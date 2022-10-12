@@ -71,43 +71,49 @@ const Container = styled.div`
 	display: grid;
 	grid-template-columns: 5% 95%;
 	align-items: center;
-	background-color: #080420;
-	padding: 2.2rem 2rem;
-	box-shadow: 0 5px 10px #464182;
+	background-color: ${(props) => props.theme.bgDetail};
+	padding: 2.1rem 2rem;
+	box-shadow: 0px 0px 10px 0px rgba(75, 75, 75, 0.5);
 
 	.button-container {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 1rem;
-		color: white;
+		color: ${(props) => props.theme.color};
 
 		.emoji {
 			position: relative;
 
 			svg {
 				font-size: 1.5rem;
-				color: #ffff00c8;
+				color: ${(props) => props.theme.colorEmoji};
+				transition: 0.6s;
 				cursor: pointer;
+				&:hover {
+					color: ${(props) => props.theme.colorEmojiHover};
+				}
 			}
 
 			.EmojiPickerReact {
 				position: absolute;
 				top: -460px;
-				background-color: #080420;
+				background-color: ${(props) => props.theme.bgEmoji};
 				box-shadow: 0 5px 10px #9a86f3;
-				border-color: #9186f3;
+				border-color: ${(props) => props.theme.borderColorEmoji};
 
 				.epr-search {
 					background-color: transparent;
 				}
-
+				.epr-emoji:hover > img {
+					background-color: ${(props) => props.theme.bgEmojiHover} !important;
+				}
 				.epr-emoji-category-label {
-					background-color: #080420;
-					color: #858585;
+					background-color: ${(props) => props.theme.bgEmoji};
+					color: ${(props) => props.theme.colorLabelEmoji};
 				}
 				.epr-preview {
-					padding
+					display: none;
 				}
 			}
 		}
@@ -118,13 +124,13 @@ const Container = styled.div`
 		border-radius: 2rem;
 		display: flex;
 		align-items: center;
-		gap: 2rem;
-		background-color: #ffffff34;
+		gap: 1rem;
+		background-color: ${(props) => props.theme.bgInput};
 
 		input {
 			width: 90%;
 			background-color: transparent;
-			color: white;
+			color: ${(props) => props.theme.color};
 			border: none;
 			padding-left: 1rem;
 			font-size: 1rem;
@@ -137,24 +143,28 @@ const Container = styled.div`
 		}
 
 		button {
-			padding: 0.3rem 2rem;
+			padding: 0.3rem 1rem;
 			border-radius: 2rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-color: #9a86f3;
+			background-color: ${(props) => props.theme.colorButton};
 			border: none;
 			cursor: pointer;
+			transition: 0.6s;
+			&:hover {
+				background-color: ${(props) => props.theme.colorButtonHover};
+			}
 
 			svg {
 				font-size: 1.5rem;
-				color: white;
+				color: ${(props) => props.theme.colorSvg};
 			}
 		}
 	}
 
 	@media screen and (min-width: 768.01px) and (max-width: 1000px) {
-		gap: 1rem
+		gap: 1rem;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -178,7 +188,7 @@ const Container = styled.div`
 			button {
 				padding: 0.5rem 1rem;
 				svg {
-					font-size: 1.1rem
+					font-size: 1.1rem;
 				}
 			}
 		}
@@ -218,20 +228,6 @@ const Container = styled.div`
 							}
 						}
 					}
-
-					.epr-preview {
-						height: auto;
-						padding: 0.5rem;
-						& > div {
-							img {
-								width: 35px !important;
-								height: 35px !important;
-							}
-						}
-						.epr-preview-emoji-label {
-							font-size: 0.8rem;
-						}
-					}
 				}
 			}
 		}
@@ -244,10 +240,9 @@ const Container = styled.div`
 			button {
 				padding: 0.3rem 0.5rem;
 				svg {
-					font-size: 1rem
+					font-size: 1rem;
 				}
 			}
 		}
 	}
-	
 `;
