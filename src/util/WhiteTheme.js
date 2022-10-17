@@ -8,7 +8,7 @@ export const whiteTheme = {
 	bgInfoUser: "#b1b9ea",
 	bgSended: "#b7ece7",
 	bgReceived: "#ccc",
-	bgInput: "#ffffff34",
+	bgInput: "#a8ed8982",
 	bgEmoji: "#eee",
 	bgToggleButton: "#fff",
 	bgEmojiHover: "#ccc",

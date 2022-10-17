@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Robot from "../assets/robot.gif";
+import Logout from "./Logout";
 
 export default function Welcome({ currentUser }) {
 	return (
@@ -10,6 +11,9 @@ export default function Welcome({ currentUser }) {
 				Welcome, <span>{currentUser.username}</span>
 			</h1>
 			<h3>Please select a chat to Start Messaging.</h3>
+			<div>
+				<Logout />
+			</div>
 		</Container>
 	);
 }
@@ -23,7 +27,12 @@ const Container = styled.div`
 	border: ${(props) => props.theme.borderApp};
 	border-left: none;
 	padding: 0 1rem;
-
+	position: relative;
+	& > div {
+		position: absolute;
+		top: 5%;
+		right: 5%;
+	}
 	img {
 		height: 20rem;
 	}

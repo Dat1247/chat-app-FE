@@ -189,6 +189,7 @@ const Container = styled.div`
 		overflow: auto;
 		gap: 0.8rem;
 		flex-grow: 1;
+		position: relative;
 
 		&::-webkit-scrollbar {
 			width: 0.2rem;
@@ -219,6 +220,7 @@ const Container = styled.div`
 			}
 
 			.username {
+				display: block;
 				h3 {
 					color: ${(props) => props.theme.color};
 				}
@@ -235,7 +237,7 @@ const Container = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 2rem;
+		gap: 1rem;
 		padding: 1rem 0;
 
 		.avatar {
@@ -287,6 +289,10 @@ const Container = styled.div`
 		}
 		.contacts {
 			.contact {
+				justify-content: center;
+				min-height: 0;
+				gap: 0;
+				flex-direction: column;
 				.avatar {
 					img {
 						height: 2rem;

@@ -126,6 +126,7 @@ const Container = styled.div`
 		align-items: center;
 		gap: 1rem;
 		background-color: ${(props) => props.theme.bgInput};
+		position: relative;
 
 		input {
 			width: 90%;
@@ -134,6 +135,7 @@ const Container = styled.div`
 			border: none;
 			padding-left: 1rem;
 			font-size: 1rem;
+			height: 2rem;
 			&::selection {
 				background-color: #9186f3;
 			}
@@ -143,6 +145,9 @@ const Container = styled.div`
 		}
 
 		button {
+			position: absolute;
+			top: 0;
+			right: 0;
 			padding: 0.3rem 1rem;
 			border-radius: 2rem;
 			display: flex;
@@ -238,7 +243,7 @@ const Container = styled.div`
 				padding-left: 0.8rem;
 			}
 			button {
-				padding: 0.3rem 0.5rem;
+				padding: 0.5rem 0.8rem;
 				svg {
 					font-size: 1rem;
 				}
